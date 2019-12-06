@@ -66,6 +66,7 @@ sau link-urilor .</p>
 <p>➢ Administratorul are control deplin asupra aplicatiei (poate face
 CRUD – CREATE, READ, UPDATE, DELETE – adauga, vizualiza,
 edita, sterge orice tip de informatie corespunzatoare aplicatiei).
+  
 ➢ Nota maxima se obtine in momentul in care se respecta cerintele,
 dar si aceste reguli esentiale dezvoltarii unei aplicatii web.</p>
 </article>
