@@ -10,12 +10,13 @@ namespace RedditClone.Models
     {
         public int CommunityId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
 
     }
 
     public class CommunityDBContext : DbContext
     {
-        public CommunityDBContext() : base("C:\USERS\CONST\DESKTOP\CACAT\REDDITCLONE\REDDITCLONE\APP_DATA\BAZASPATIALA.MDF") { }
+        public CommunityDBContext() : base("C:\\USERS\\CONST\\DESKTOP\\CACAT\\REDDITCLONE\\REDDITCLONE\\APP_DATA\\BAZASPATIALA.MDF") { }
         public DbSet<Community> Communities { get; set; } // Not sure if this is working properly or the line above 
     }
 }
