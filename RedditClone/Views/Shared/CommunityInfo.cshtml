@@ -1,0 +1,13 @@
+﻿
+@model RedditClone.Models.Community
+
+
+<div class="panel-heading">@Model.Name</div>
+<div class="panel-body">
+    Continut Des <strong>@Model.Description</strong>
+    <br />
+    <span class="label label-success">@Model.CreationTime</span>
+    <br />
+    <i class="glyphicon glyphicon-user"></i> <i>Community Owner:</i>
+    <strong> @Model.User.UserName </strong>
+</div>

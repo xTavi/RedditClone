@@ -243,6 +243,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Community\New.cshtml" />
     <Content Include="Views\Community\Index.cshtml" />
+    <Content Include="Views\Shared\CommunityInfo.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

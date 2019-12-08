@@ -1,7 +1,25 @@
 ﻿
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Afisare articole";
 }
 
-<h2>View</h2>
+<h2>@ViewBag.Title</h2>
+
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+@foreach (RedditClone.Models.Community community in ViewBag.Communities)
+{
+    <div class="panel panel-default">
+        @Html.Partial("CommunityInfo", community)
+        <div class="panel-footer">
+            <a class="btn btn-sm btn-success" href="/Community/Show/@community.CommunityId">Discover community</a>
+        </div>
+    </div>
+    <br />
+}
+
 

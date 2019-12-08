@@ -27,8 +27,3 @@ namespace RedditClone.Models
         public virtual ApplicationUser User { get; set; }
     }
 }
-    //public class CommunityDBContext : DbContext
-    //{
-    //    public CommunityDBContext() : base("C:\\USERS\\CONST\\DESKTOP\\CACAT\\REDDITCLONE\\REDDITCLONE\\APP_DATA\\BAZASPATIALA.MDF") { }
-    //    public DbSet<Community> Communities { get; set; } // Not sure if this is working properly or the line above 
-    //}
