@@ -4,43 +4,155 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+
 
 namespace RedditClone.Controllers
 {
     public class CommunityController : Controller
     {
-        // GET: lista tuturor studentilor
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        //[Authorize(Roles = "User,Editor,Administrator")]
+        // GET: 
         public ActionResult Index()
         {
-            return View();
-        }
-        // GET: vizualizarea unui student
-        public ActionResult Show(int id)
-        {
+            var communities = db.Communities;
+
+            ViewBag.Communities = communities;
+
             return View();
         }
 
-        public ActionResult New(Community community)
+        //[Authorize(Roles = "User,Editor,Administrator")]
+        // GET: vizualizarea unui student
+        public ActionResult Show(int id)
         {
-            return View();
+            Community community = db.Communities.Find(id);
+
+            //This will be uncommented when 
+            //ViewBag.afisareButoane = false;
+            //if (User.IsInRole("Editor") || User.IsInRole("Administrator"))
+            //{
+            //    ViewBag.afisareButoane = true;
+            //}
+
+            //ViewBag.esteAdmin = User.IsInRole("Administrator");
+            //ViewBag.utilizatorCurent = User.Identity.GetUserId();
+
+            return View(community);
+        }
+      
+        //[Authorize(Roles = "User,Editor,Administrator")]
+        public ActionResult New()
+        {
+            Community community = new Community();
+            return View(community);
         }
 
 
         // POST: trimitem datele studentului catre server pentru creare
         [HttpPost]
-        public ActionResult Create(Community community)
+        //[Authorize(Roles = "Editor,Administrator")]
+        public ActionResult New(Community community)
         {
-            // cod creare student
-            // dupa ce am creat studentul luam ID-ul nou inserat din baza de date
-            // redirectionam browser-ul catre studentul nou creat
-            int id = 123;
-            return Redirect("/students/" + id);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Communities.Add(community);
+                    db.SaveChanges();
+                    TempData["message"] = "O noua comunitate a fost adaugata!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(community);
+                }
+            }
+            catch (Exception e)
+            {
+                return View(community);
+            }
         }
 
+        //[Authorize(Roles = "Editor,Administrator")]
         // GET: vrem sa editam un student
-        public ActionResult Edit(int ID)
+        public ActionResult Edit(int Id)
         {
-            return View();
+            Community community = db.Communities.Find(Id);
+            ViewBag.Community = community;
+            if (community.UserId == User.Identity.GetUserId() || User.IsInRole("Administrator"))
+            {
+                return View(community);
+            }
+            else
+            {
+                TempData["message"] = "Nu aveti dreptul sa faceti modificari asupra unui articol care nu va apartine!";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPut]
+        [Authorize(Roles = "Editor,Administrator")]
+        public ActionResult Edit(int id, Community requestCommunity)
+        {
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Community community = db.Communities.Find(id);
+                    if (community.UserId == User.Identity.GetUserId() ||
+                        User.IsInRole("Administrator"))
+                    {
+                        if (TryUpdateModel(community))
+                        {
+                            community.Name = requestCommunity.Name;
+                            community.Description = requestCommunity.Description;
+                            db.SaveChanges();
+                            TempData["message"] = "Datele comunitatii au fost modificate!";
+                        }
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["message"] = "Nu aveti dreptul sa faceti modificari asupra unei comunitati care nu va apartine!";
+                        return RedirectToAction("Index");
+                    }
+
+                }
+                else
+                {
+                    return View(requestCommunity);
+                }
+
+            }
+            catch (Exception e)
+            {
+                return View(requestCommunity);
+            }
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Editor,Administrator")]
+        public ActionResult Delete(int id)
+        {
+            Community article = db.Communities.Find(id);
+            if (article.UserId == User.Identity.GetUserId() ||
+                User.IsInRole("Administrator"))
+            {
+                db.Communities.Remove(article);
+                db.SaveChanges();
+                TempData["message"] = "Articolul a fost sters!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["message"] = "Nu aveti dreptul sa stergeti un articol care nu va apartine!";
+                return RedirectToAction("Index");
+            }
+
         }
     }
 }

@@ -24,6 +24,7 @@ namespace RedditClone.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<Community> Communities { get; set; }
 
         public static ApplicationDbContext Create()
         {
