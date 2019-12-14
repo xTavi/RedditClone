@@ -1,6 +1,4 @@
-﻿@model.RedditClone.Models.Community
-
-@{
+﻿@{
     ViewBag.Titlu = "New Community";
 }
 
@@ -11,31 +9,25 @@
 {
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-    @Html.HiddenFor(m => m.UserId)
+    //@Html.HiddenFor(m => m.UserId) not working???
 
-    @Html.Label("Title", "Titlu Articol")
+    @Html.Label("Name", "Community Name")
     <br />
-    @Html.TextBox("Title", null, new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-    <br />
+    @Html.TextBox("Name", null, new { @class = "form-control" })
     <br />
 
-    @Html.Label("Content", "Continut Articol")
+    @Html.Label("Description", "Brief description")
     <br />
     @Html.TextArea("Content", null, new { @class = "form-control" })
     @Html.ValidationMessage("Content", "", new { @class = "text-danger" })
     <br />
     <br />
 
-    @Html.Hidden("Date", DateTime.Now, new { @class = "form-control" })
+    @Html.Hidden("CreationTime", DateTime.Now, new { @class = "form-control" })
 
     <label>Selectati categoria</label>
 
-    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text"),
-        "Selectati categoria", new { @class = "form-control" })
-
-    @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
     <br />
 
-    <button class="btn btn-sm btn-success" type="submit">Adauga articol</button>
+    <button class="btn btn-sm btn-success" type="submit">Create community!</button>
 }
