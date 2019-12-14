@@ -1,0 +1,37 @@
+﻿@model.RedditClone.Models.Community
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h1>Show community</h1>
+
+
+<div class="panel panel-default">
+    @Html.Partial("CommunityInfo", Model)
+
+    @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+        || ViewBag.esteAdmin)
+    {
+
+        <div class="panel-footer">
+            <a class="btn btn-success" href="/Article/Edit/@Model.CommunityId">Modifica articol</a>
+            <br />
+        </div>
+    }
+</div>
+
+
+@if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+    || ViewBag.esteAdmin)
+{
+
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Article", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
+    {
+
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <br />
+        <button class="btn btn-success" type="submit">Sterge articol</button>
+
+    }
+}
