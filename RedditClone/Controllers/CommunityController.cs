@@ -13,7 +13,7 @@ namespace RedditClone.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //[Authorize(Roles = "User,Editor,Administrator")]
+        [Authorize(Roles = "Guest,User,Moderator,Administrator")]
         // GET: 
         public ActionResult Index()
         {
@@ -24,7 +24,7 @@ namespace RedditClone.Controllers
             return View();
         }
 
-        //[Authorize(Roles = "User,Editor,Administrator")]
+        [Authorize(Roles = "Guest,User,Moderator,Administrator")]
         // GET: vizualizarea unui student
         public ActionResult Show(int id)
         {
@@ -43,7 +43,7 @@ namespace RedditClone.Controllers
             return View(community);
         }
       
-        //[Authorize(Roles = "User,Editor,Administrator")]
+        [Authorize(Roles = "User,Moderator,Administrator")]
         public ActionResult New()
         {
             Community community = new Community();
@@ -53,7 +53,7 @@ namespace RedditClone.Controllers
 
         // POST: trimitem datele studentului catre server pentru creare
         [HttpPost]
-        //[Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult New(Community community)
         {
             try
@@ -76,7 +76,7 @@ namespace RedditClone.Controllers
             }
         }
 
-        //[Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         // GET: vrem sa editam un student
         public ActionResult Edit(int Id)
         {
@@ -94,7 +94,7 @@ namespace RedditClone.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult Edit(int id, Community requestCommunity)
         {
 
@@ -135,14 +135,14 @@ namespace RedditClone.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult Delete(int id)
         {
-            Community article = db.Communities.Find(id);
-            if (article.UserId == User.Identity.GetUserId() ||
+            Community community = db.Communities.Find(id);
+            if (community.UserId == User.Identity.GetUserId() ||
                 User.IsInRole("Administrator"))
             {
-                db.Communities.Remove(article);
+                db.Communities.Remove(community);
                 db.SaveChanges();
                 TempData["message"] = "Articolul a fost sters!";
                 return RedirectToAction("Index");
