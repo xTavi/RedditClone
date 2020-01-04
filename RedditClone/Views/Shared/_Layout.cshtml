@@ -30,15 +30,15 @@
         </div>
     </div>
     <div class="container-fluid row">
-        <div class="col-lg-2">*SIDENAV*</div>
+        @Html.Partial("SideNav")
         <div class="col-lg-10 body-content">
             @RenderBody()
             <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - RedditClone</p>
-            </footer>
         </div>
     </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - RedditClone</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
