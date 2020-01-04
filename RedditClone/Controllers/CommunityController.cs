@@ -25,7 +25,7 @@ namespace RedditClone.Controllers
         }
 
         [Authorize(Roles = "Guest,User,Moderator,Administrator")]
-        // GET: vizualizarea unui student
+        // GET: vizualizarea unei comunitati
         public ActionResult Show(int id)
         {
             Community community = db.Communities.Find(id);
