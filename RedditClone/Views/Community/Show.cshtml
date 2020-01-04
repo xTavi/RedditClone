@@ -1,6 +1,4 @@
-﻿@model.RedditClone.Models.Community
-
-@{
+﻿@{
     ViewBag.Title = "Show";
 }
 
@@ -8,7 +6,7 @@
 
 
 <div class="panel panel-default">
-    @Html.Partial("CommunityInfo", Model)
+    @Html.Partial("CommunityInfo")
 
     @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
         || ViewBag.esteAdmin)

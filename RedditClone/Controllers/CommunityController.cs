@@ -30,15 +30,15 @@ namespace RedditClone.Controllers
         {
             Community community = db.Communities.Find(id);
 
-            //This will be uncommented when 
-            //ViewBag.afisareButoane = false;
-            //if (User.IsInRole("Editor") || User.IsInRole("Administrator"))
-            //{
-            //    ViewBag.afisareButoane = true;
-            //}
 
-            //ViewBag.esteAdmin = User.IsInRole("Administrator");
-            //ViewBag.utilizatorCurent = User.Identity.GetUserId();
+            ViewBag.afisareButoane = false;
+            if (User.IsInRole("Editor") || User.IsInRole("Administrator"))
+            {
+                ViewBag.afisareButoane = true;
+            }
+
+            ViewBag.esteAdmin = User.IsInRole("Administrator");
+            ViewBag.utilizatorCurent = User.Identity.GetUserId();
 
             return View(community);
         }
@@ -51,7 +51,7 @@ namespace RedditClone.Controllers
         }
 
 
-        // POST: trimitem datele studentului catre server pentru creare
+        // POST: trimitem datele catre server pentru creare
         [HttpPost]
         [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult New(Community community)

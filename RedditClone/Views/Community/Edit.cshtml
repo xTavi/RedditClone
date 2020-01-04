@@ -1,5 +1,7 @@
-﻿@{
-    ViewBag.Titlu = "Editare Articol";
+﻿@model.RedditClone.Models.Community
+
+@{
+    ViewBag.Titlu = "Editare Comunitate";
 }
 
 <h2>@ViewBag.Titlu</h2>
@@ -8,7 +10,7 @@
 {
     @Html.HttpMethodOverride(HttpVerbs.Put)
 
-    //@Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Id)
     <br />
     @Html.Label("Title", "Titlu Articol")
     <br />
