@@ -5,8 +5,7 @@
 <div class="panel-heading">@Model.Name</div>
 <div class="panel-body">
     <strong>@Model.Description</strong>
-    <br />
-    <i class="glyphicon glyphicon-user"></i> <i>Community Owner:</i>
+    <i class="glyphicon glyphicon-user"></i> Community Owner: @Model.User.UserName
     <br />
     <b>Since:</b><span class="label label-success">@Model.CreationTime</span>
     <br />
