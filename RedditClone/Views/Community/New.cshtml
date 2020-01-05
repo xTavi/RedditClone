@@ -1,4 +1,6 @@
-﻿@{
+﻿@model RedditClone.Models.Community
+
+@{
     ViewBag.Titlu = "New Community";
 }
 
@@ -9,7 +11,7 @@
 {
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
-    //@Html.HiddenFor(m => m.UserId) not working???
+    @Html.HiddenFor(m => m.UserId)
 
     @Html.Label("Name", "Community Name")
     <br />

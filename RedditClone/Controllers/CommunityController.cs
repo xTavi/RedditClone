@@ -17,7 +17,7 @@ namespace RedditClone.Controllers
         // GET: 
         public ActionResult Index()
         {
-            var communities = db.Communities;
+            var communities = db.Communities.Include("User");
 
             ViewBag.Communities = communities;
 
@@ -47,6 +47,7 @@ namespace RedditClone.Controllers
         public ActionResult New()
         {
             Community community = new Community();
+            community.UserId = User.Identity.GetUserId();
             return View(community);
         }
 
