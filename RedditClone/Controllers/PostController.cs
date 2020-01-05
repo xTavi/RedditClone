@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace RedditClone.Controllers
 {
-    public class CommunityPostController : Controller
+    public class PostController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

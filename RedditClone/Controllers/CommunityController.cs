@@ -89,7 +89,7 @@ namespace RedditClone.Controllers
             }
             else
             {
-                TempData["message"] = "Nu aveti dreptul sa faceti modificari asupra unui articol care nu va apartine!";
+                TempData["message"] = "Nu aveti dreptul sa faceti modificari asupra unei comunitati care nu va apartine!";
                 return RedirectToAction("Index");
             }
         }
