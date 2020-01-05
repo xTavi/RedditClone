@@ -169,7 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommunityController.cs" />
-    <Compile Include="Controllers\CommunityPostController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,7 +177,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Community.cs" />
-    <Compile Include="Models\CommunityPost.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PostContent.cs" />
@@ -252,10 +252,9 @@
     <Content Include="Views\Community\Show.cshtml" />
     <Content Include="Views\Community\Edit.cshtml" />
     <Content Include="Views\Shared\SideNav.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\CommunityPost\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

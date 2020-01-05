@@ -6,17 +6,18 @@ using System.Web;
 
 namespace RedditClone.Models
 {
-    public class CommunityPost
+    public class Post
     {
         [Key]
-        private int CommunityPostId { get; set; }
+        public int PostId { get; set; }
 
         private int CommunityId { get; set; }
 
         [Required(ErrorMessage = "Titlul postarii este obligatoriu")]
         [StringLength(256, ErrorMessage = "Numele nu poate avea mai mult de 20 caractere")]
         private String Title { get; set; }
-
-        private PostContent Content { get; set; }
+        
+        [Required(ErrorMessage = "Continutul nu poate fi gol postarii este obligatoriu")]
+        private String Content { get; set; }
     }
 }
