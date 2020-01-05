@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Reddit Clone</title>
+    <link href="~/Content/footer.css" rel="stylesheet" type="text/css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -26,17 +27,19 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+                
             </div>
         </div>
     </div>
-    <div class="container-fluid row">
+    <div class="container-fluid row" style="margin-left: 0;margin-right: 0;padding-left: 0; padding-right: 0;">
         @Html.Partial("SideNav")
+       
         <div class="col-lg-10 body-content">
             @RenderBody()
             <hr />
         </div>
     </div>
-    <footer>
+    <footer id="footer">
         <p>&copy; @DateTime.Now.Year - RedditClone</p>
     </footer>
 

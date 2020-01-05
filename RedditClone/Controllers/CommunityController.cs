@@ -154,5 +154,17 @@ namespace RedditClone.Controllers
             }
 
         }
+
+        public ActionResult GetSubscribedCommunities()
+        {
+            if (User.IsInRole("Guest"))
+            {
+                //list is most popular
+            } else
+            {
+                //list is subscribed communities
+            }
+            return PartialView();
+        }
     }
 }
