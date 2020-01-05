@@ -50,12 +50,6 @@ namespace RedditClone
                 role.Name = "User";
                 roleManager.Create(role);
             }
-            if (!roleManager.RoleExists("Guest"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Guest";
-                roleManager.Create(role);
-            }
         }
     }
 }

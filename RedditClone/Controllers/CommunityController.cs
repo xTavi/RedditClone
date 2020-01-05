@@ -13,7 +13,7 @@ namespace RedditClone.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize(Roles = "Guest,User,Moderator,Administrator")]
+        [AllowAnonymous]
         // GET: 
         public ActionResult Index()
         {
@@ -24,7 +24,7 @@ namespace RedditClone.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Guest,User,Moderator,Administrator")]
+        [Authorize(Roles = "User,Moderator,Administrator")]
         // GET: vizualizarea unei comunitati
         public ActionResult Show(int id)
         {
@@ -54,7 +54,7 @@ namespace RedditClone.Controllers
 
         // POST: trimitem datele catre server pentru creare
         [HttpPost]
-        [Authorize(Roles = "Moderator,Administrator")]
+        [Authorize(Roles = "User,Moderator,Administrator")]
         public ActionResult New(Community community)
         {
             try
