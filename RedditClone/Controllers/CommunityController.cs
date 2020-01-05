@@ -13,47 +13,48 @@ namespace RedditClone.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //[Authorize(Roles = "User,Editor,Administrator")]
+        [Authorize(Roles = "Guest,User,Moderator,Administrator")]
         // GET: 
         public ActionResult Index()
         {
-            var communities = db.Communities;
+            var communities = db.Communities.Include("User");
 
             ViewBag.Communities = communities;
 
             return View();
         }
 
-        //[Authorize(Roles = "User,Editor,Administrator")]
-        // GET: vizualizarea unui student
+        [Authorize(Roles = "Guest,User,Moderator,Administrator")]
+        // GET: vizualizarea unei comunitati
         public ActionResult Show(int id)
         {
             Community community = db.Communities.Find(id);
 
-            //This will be uncommented when 
-            //ViewBag.afisareButoane = false;
-            //if (User.IsInRole("Editor") || User.IsInRole("Administrator"))
-            //{
-            //    ViewBag.afisareButoane = true;
-            //}
 
-            //ViewBag.esteAdmin = User.IsInRole("Administrator");
-            //ViewBag.utilizatorCurent = User.Identity.GetUserId();
+            ViewBag.afisareButoane = false;
+            if (User.IsInRole("Editor") || User.IsInRole("Administrator"))
+            {
+                ViewBag.afisareButoane = true;
+            }
+
+            ViewBag.esteAdmin = User.IsInRole("Administrator");
+            ViewBag.utilizatorCurent = User.Identity.GetUserId();
 
             return View(community);
         }
       
-        //[Authorize(Roles = "User,Editor,Administrator")]
+        [Authorize(Roles = "User,Moderator,Administrator")]
         public ActionResult New()
         {
             Community community = new Community();
+            community.UserId = User.Identity.GetUserId();
             return View(community);
         }
 
 
-        // POST: trimitem datele studentului catre server pentru creare
+        // POST: trimitem datele catre server pentru creare
         [HttpPost]
-        //[Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult New(Community community)
         {
             try
@@ -76,7 +77,7 @@ namespace RedditClone.Controllers
             }
         }
 
-        //[Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         // GET: vrem sa editam un student
         public ActionResult Edit(int Id)
         {
@@ -94,7 +95,7 @@ namespace RedditClone.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult Edit(int id, Community requestCommunity)
         {
 
@@ -135,14 +136,14 @@ namespace RedditClone.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Editor,Administrator")]
+        [Authorize(Roles = "Moderator,Administrator")]
         public ActionResult Delete(int id)
         {
-            Community article = db.Communities.Find(id);
-            if (article.UserId == User.Identity.GetUserId() ||
+            Community community = db.Communities.Find(id);
+            if (community.UserId == User.Identity.GetUserId() ||
                 User.IsInRole("Administrator"))
             {
-                db.Communities.Remove(article);
+                db.Communities.Remove(community);
                 db.SaveChanges();
                 TempData["message"] = "Articolul a fost sters!";
                 return RedirectToAction("Index");
@@ -153,6 +154,18 @@ namespace RedditClone.Controllers
                 return RedirectToAction("Index");
             }
 
+        }
+
+        public ActionResult GetSubscribedCommunities()
+        {
+            if (User.IsInRole("Guest"))
+            {
+                //list is most popular
+            } else
+            {
+                //list is subscribed communities
+            }
+            return PartialView();
         }
     }
 }

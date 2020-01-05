@@ -13,7 +13,7 @@
     {
 
         <div class="panel-footer">
-            <a class="btn btn-success" href="/Article/Edit/@Model.CommunityId">Modifica articol</a>
+            <a class="btn btn-success" href="/Community/Edit/@Model.CommunityId">Modifica articol</a>
             <br />
         </div>
     }
@@ -24,12 +24,12 @@
     || ViewBag.esteAdmin)
 {
 
-    using (Html.BeginForm(actionName: "Delete", controllerName: "Article", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Community", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
     {
 
         @Html.HttpMethodOverride(HttpVerbs.Delete)
         <br />
-        <button class="btn btn-success" type="submit">Sterge articol</button>
+        <button class="btn btn-success" type="submit">Sterge comunitate</button>
 
     }
 }
