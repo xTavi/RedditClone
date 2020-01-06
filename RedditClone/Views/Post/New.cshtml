@@ -1,0 +1,36 @@
+﻿
+@model RedditClone.Models.Post
+
+@{
+    ViewBag.Titlu = "New Post";
+}
+
+<h2>@ViewBag.Titlu</h2>
+<br />
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Post"))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.UserId)
+
+    @Html.Label("Titlu", "Post Name")
+    <br />
+    @Html.TextBox("Title", null, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Content", "Post content")
+    <br />
+    @Html.TextArea("Content", null, new { @class = "form-control" })
+    @Html.ValidationMessage("Content", "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+
+
+    <label>Selectati categoria</label>
+
+    <br />
+
+    <button class="btn btn-sm btn-success" type="submit">Create Post!</button>
+}

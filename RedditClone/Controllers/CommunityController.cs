@@ -145,12 +145,12 @@ namespace RedditClone.Controllers
             {
                 db.Communities.Remove(community);
                 db.SaveChanges();
-                TempData["message"] = "Articolul a fost sters!";
+                TempData["message"] = "Comunitatea a fost sters!";
                 return RedirectToAction("Index");
             }
             else
             {
-                TempData["message"] = "Nu aveti dreptul sa stergeti un articol care nu va apartine!";
+                TempData["message"] = "Nu aveti dreptul sa stergeti unei comunitati care nu va apartine!";
                 return RedirectToAction("Index");
             }
 

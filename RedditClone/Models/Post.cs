@@ -10,14 +10,19 @@ namespace RedditClone.Models
     {
         [Key]
         public int PostId { get; set; }
-
-        private int CommunityId { get; set; }
-
+        
         [Required(ErrorMessage = "Titlul postarii este obligatoriu")]
         [StringLength(256, ErrorMessage = "Numele nu poate avea mai mult de 20 caractere")]
-        private String Title { get; set; }
+        public String Title { get; set; }
         
         [Required(ErrorMessage = "Continutul nu poate fi gol postarii este obligatoriu")]
-        private String Content { get; set; }
+        public String Content { get; set; }
+       
+        private int CommunityId { get; set; }
+        public Community Community { get; set; }
+
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
     }
 }
