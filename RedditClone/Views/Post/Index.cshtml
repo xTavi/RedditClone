@@ -11,13 +11,14 @@
     <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
 }
 
+<h1>Ce faci ?? ?? </h1>
 
 @foreach (RedditClone.Models.Post post in ViewBag.Posts)
 {
     <div class="panel panel-default">
         @Html.Partial("PostInfo", post)
         <div class="panel-footer">
-            <a class="btn btn-sm btn-success" href="/Post/Show/@post.PostId">Read Post </a>
+            <a class="btn btn-sm btn-success" href="/Community/Show/@post.PostId">Read Post </a>
         </div>
     </div>
     <br />
