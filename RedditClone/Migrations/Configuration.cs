@@ -9,7 +9,7 @@ namespace RedditClone.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "RedditClone.Models.ApplicationDbContext";
         }
 

@@ -22,7 +22,7 @@ namespace RedditClone
             routes.MapRoute(
               name: "Posts",
               url: "{controller}/{action}/{id}",
-              defaults: new { controller = "CoPost", action = "Index", id = UrlParameter.Optional }
+              defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional }
           );
 
             routes.MapRoute(

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace RedditClone.Controllers
 {
-    public class CoPostController : Controller
+    public class PostController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -16,14 +16,14 @@ namespace RedditClone.Controllers
         // GET: 
         public ActionResult Index()
         {
-            var posts = db.CoPosts.Include("User").Include("Community");
+            var posts = db.Posts.Include("User").Include("Community");
 
             if (TempData.ContainsKey("message"))
             {
                 ViewBag.message = TempData["message"].ToString();
             }
 
-            ViewBag.CoPosts = posts;
+            ViewBag.Posts = posts;
 
             return View();
         }
@@ -32,7 +32,7 @@ namespace RedditClone.Controllers
         // GET: vizualizarea unei postari
         public ActionResult Show(int id)
         {
-            CoPost post = db.CoPosts.Find(id);
+            Post post = db.Posts.Find(id);
 
 
             ViewBag.afisareButoane = false;
@@ -50,7 +50,7 @@ namespace RedditClone.Controllers
         [Authorize(Roles = "User,Moderator,Administrator")]
         public ActionResult New()
         {
-            CoPost post = new CoPost();
+            Post post = new Post();
             post.UserId = User.Identity.GetUserId();
             return View(post);
         }
@@ -59,13 +59,13 @@ namespace RedditClone.Controllers
         // POST: trimitem datele catre server pentru creare
         [HttpPost]
         [Authorize(Roles = "User,Moderator,Administrator")]
-        public ActionResult New(CoPost post)
+        public ActionResult New(Post post)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.CoPosts.Add(post);
+                    db.Posts.Add(post);
                     db.SaveChanges();
                     TempData["message"] = "O noua postare a fost adaugata!";
                     return RedirectToAction("Index");
@@ -87,7 +87,7 @@ namespace RedditClone.Controllers
         // GET: vrem sa editam un student
         public ActionResult Edit(int Id)
         {
-            CoPost post = db.CoPosts.Find(Id);
+            Post post = db.Posts.Find(Id);
             ViewBag.Post = post;
             if (post.UserId == User.Identity.GetUserId() || User.IsInRole("Administrator"))
             {
@@ -102,14 +102,14 @@ namespace RedditClone.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Moderator,Administrator")]
-        public ActionResult Edit(int id, CoPost requestPost)
+        public ActionResult Edit(int id, Post requestPost)
         {
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    CoPost post = db.CoPosts.Find(id);
+                    Post post = db.Posts.Find(id);
                     if (post.UserId == User.Identity.GetUserId() ||
                         User.IsInRole("Administrator"))
                     {

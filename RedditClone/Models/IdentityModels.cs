@@ -27,7 +27,7 @@ namespace RedditClone.Models
         {
         }
         public DbSet<Community> Communities { get; set; }
-        public DbSet<CoPost> CoPosts { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -1,4 +1,4 @@
-﻿@model RedditClone.Models.CoPost
+﻿@model RedditClone.Models.Post
 
 @{
     ViewBag.Titlu = "New Post";
@@ -7,7 +7,7 @@
 <h2>@ViewBag.Titlu</h2>
 <br />
 
-@using (Html.BeginForm(actionName: "New", controllerName: "CoPost"))
+@using (Html.BeginForm(actionName: "New", controllerName: "Post"))
 {
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 

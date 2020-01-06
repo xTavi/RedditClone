@@ -27,6 +27,6 @@ namespace RedditClone.Models
 
         public virtual ApplicationUser User { get; set; }
 
-        public ICollection<CoPost> CoPost { get; set; }
+        public ICollection<Post> Post { get; set; }
     }
 }
