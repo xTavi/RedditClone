@@ -52,7 +52,6 @@ namespace RedditClone.Controllers
         {
             CoPost post = new CoPost();
             post.UserId = User.Identity.GetUserId();
-            post.CommunityId = 7;
             return View(post);
         }
 
@@ -69,7 +68,7 @@ namespace RedditClone.Controllers
                     db.CoPosts.Add(post);
                     db.SaveChanges();
                     TempData["message"] = "O noua postare a fost adaugata!";
-                    return View(post);
+                    return RedirectToAction("Index");
                 }
                 else
                 {

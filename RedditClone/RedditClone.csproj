@@ -175,8 +175,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912161428199_InitialCreate.cs" />
+    <Compile Include="Migrations\201912161428199_InitialCreate.Designer.cs">
+      <DependentUpon>201912161428199_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001061825243_Communities.cs" />
+    <Compile Include="Migrations\202001061825243_Communities.Designer.cs">
+      <DependentUpon>202001061825243_Communities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Community.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\CoPost.cs" />
@@ -256,7 +266,14 @@
     <Content Include="Views\Shared\PostInfo.cshtml" />
     <Content Include="Views\CoPost\New.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912161428199_InitialCreate.resx">
+      <DependentUpon>201912161428199_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001061825243_Communities.resx">
+      <DependentUpon>202001061825243_Communities.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
