@@ -13,6 +13,8 @@
 
     @Html.HiddenFor(m => m.UserId)
 
+    @Html.HiddenFor(m => m.CommunityId)
+
     @Html.Label("Titlu", "Post Name")
     <br />
     @Html.TextBox("Title", null, new { @class = "form-control" })
@@ -22,13 +24,6 @@
     <br />
     @Html.TextArea("Content", null, new { @class = "form-control" })
     @Html.ValidationMessage("Content", "", new { @class = "text-danger" })
-    <br />
-    <br />
-
-
-
-    <label>Selectati categoria</label>
-
     <br />
 
     <button class="btn btn-sm btn-success" type="submit">Create Post!</button>
