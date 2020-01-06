@@ -17,6 +17,13 @@
         @Html.Partial("CommunityInfo", community)
         <div class="panel-footer">
             <a class="btn btn-sm btn-success" href="/Community/Show/@community.CommunityId">Discover community</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.Action("JoinCommunity")
+            } else
+            {
+            <a class="btn btn-sm btn-warning" href="#">Log in to join communities</a>
+            }
         </div>
     </div>
     <br />

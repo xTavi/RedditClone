@@ -30,7 +30,6 @@ namespace RedditClone.Controllers
         {
             Community community = db.Communities.Find(id);
 
-
             ViewBag.afisareButoane = false;
             if (User.IsInRole("Editor") || User.IsInRole("Administrator"))
             {
