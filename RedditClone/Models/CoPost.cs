@@ -6,10 +6,10 @@ using System.Web;
 
 namespace RedditClone.Models
 {
-    public class Post
+    public class CoPost
     {
         [Key]
-        public int PostId { get; set; }
+        public int CoPostId { get; set; }
 
         [Required(ErrorMessage = "Titlul postarii este obligatoriu")]
         [StringLength(256, ErrorMessage = "Numele nu poate avea mai mult de 20 caractere")]

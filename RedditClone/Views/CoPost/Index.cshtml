@@ -12,12 +12,12 @@
 }
 
 
-@foreach (RedditClone.Models.Post post in ViewBag.Posts)
+@foreach (RedditClone.Models.CoPost post in ViewBag.CoPosts)
 {
     <div class="panel panel-default">
         @Html.Partial("PostInfo", post)
         <div class="panel-footer">
-            <a class="btn btn-sm btn-success" href="/Post/Show/@post.PostId">Read Post </a>
+            <a class="btn btn-sm btn-success" href="/CoPost/Show/@post.CoPostId">Read Post </a>
         </div>
     </div>
     <br />
