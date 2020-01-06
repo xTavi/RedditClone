@@ -16,7 +16,12 @@ namespace RedditClone.Controllers
         // GET: 
         public ActionResult Index()
         {
-            var posts = db.Posts.Include("User");
+            var posts = db.Posts.Include("User").Include("Community");
+
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.message = TempData["message"].ToString();
+            }
 
             ViewBag.Posts = posts;
 
@@ -47,6 +52,7 @@ namespace RedditClone.Controllers
         {
             Post post = new Post();
             post.UserId = User.Identity.GetUserId();
+            post.CommunityId = 7;
             return View(post);
         }
 
@@ -63,7 +69,7 @@ namespace RedditClone.Controllers
                     db.Posts.Add(post);
                     db.SaveChanges();
                     TempData["message"] = "O noua postare a fost adaugata!";
-                    return RedirectToAction("Index");
+                    return View(post);
                 }
                 else
                 {
