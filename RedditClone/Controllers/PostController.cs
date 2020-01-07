@@ -141,5 +141,26 @@ namespace RedditClone.Controllers
             }
         }
 
+        [HttpDelete]
+        [Authorize(Roles = "Moderator,Administrator")]
+        public ActionResult Delete(int id)
+        {
+            Post post = db.Posts.Find(id);
+            if (post.UserId == User.Identity.GetUserId() ||
+                User.IsInRole("Administrator"))
+            {
+                db.Posts.Remove(post);
+                db.SaveChanges();
+                TempData["message"] = "Comunitatea a fost sters!";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["message"] = "Nu aveti dreptul sa stergeti unei comunitati care nu va apartine!";
+                return RedirectToAction("Index");
+            }
+
+        }
+
     }
 }
