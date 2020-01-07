@@ -16,10 +16,10 @@ namespace RedditClone.Models
         public String Title { get; set; }
 
         [Required(ErrorMessage = "Continutul nu poate fi gol postarii este obligatoriu")]
-        public String Content { get; set; }
+        public String Content { get; set; }                          
 
 
-        private int CommunityId { get; set; }
+        public string CommunityId { get; set; }
         public virtual Community Community { get; set; }
 
         public string UserId { get; set; }

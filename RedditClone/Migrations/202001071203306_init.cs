@@ -28,6 +28,7 @@ namespace RedditClone.Migrations
                         PostId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 256),
                         Content = c.String(nullable: false),
+                        CommunityId = c.String(),
                         UserId = c.String(maxLength: 128),
                         Community_CommunityId = c.Int(),
                     })
