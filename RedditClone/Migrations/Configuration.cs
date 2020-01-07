@@ -10,7 +10,6 @@ namespace RedditClone.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "RedditClone.Models.ApplicationDbContext";
         }
 
         protected override void Seed(RedditClone.Models.ApplicationDbContext context)

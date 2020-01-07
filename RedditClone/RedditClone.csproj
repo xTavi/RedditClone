@@ -175,17 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912161428199_InitialCreate.cs" />
-    <Compile Include="Migrations\201912161428199_InitialCreate.Designer.cs">
-      <DependentUpon>201912161428199_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001061825243_Communities.cs" />
-    <Compile Include="Migrations\202001061825243_Communities.Designer.cs">
-      <DependentUpon>202001061825243_Communities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001062213101_Initial.cs" />
-    <Compile Include="Migrations\202001062213101_Initial.Designer.cs">
-      <DependentUpon>202001062213101_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202001062353336_init.cs" />
+    <Compile Include="Migrations\202001062353336_init.Designer.cs">
+      <DependentUpon>202001062353336_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -198,10 +190,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\BazaSpatiala.mdf" />
-    <Content Include="App_Data\BazaSpatiala_log.ldf">
-      <DependentUpon>BazaSpatiala.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -270,17 +258,6 @@
     <Content Include="Views\Post\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912161428199_InitialCreate.resx">
-      <DependentUpon>201912161428199_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001061825243_Communities.resx">
-      <DependentUpon>202001061825243_Communities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001062213101_Initial.resx">
-      <DependentUpon>202001062213101_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -292,6 +269,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202001062353336_init.resx">
+      <DependentUpon>202001062353336_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
