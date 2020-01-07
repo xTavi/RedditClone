@@ -13,7 +13,7 @@ namespace RedditClone.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202001062353336_init"; }
+            get { return "202001071045069_init"; }
         }
         
         string IMigrationMetadata.Source

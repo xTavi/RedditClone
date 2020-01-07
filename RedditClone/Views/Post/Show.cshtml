@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Show";
+}
+
+<h1>Show post</h1>
+
+
+<div class="panel panel-default">
+    @Html.Partial("PostInfo")
+
+    @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+        || ViewBag.esteAdmin)
+    {
+
+        <div class="panel-footer">
+            <a class="btn btn-success" href="/Community/Edit/@Model.PostId">Modifica postarea</a>
+            <br />
+        </div>
+    }
+</div>
+
+
+@if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+    || ViewBag.esteAdmin)
+{
+
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Post", method: FormMethod.Post, routeValues: new { id = @Model.PostId }))
+    {
+
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <br />
+        <button class="btn btn-success" type="submit">Sterge comunitate</button>
+
+    }
+}
