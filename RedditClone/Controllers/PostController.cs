@@ -83,7 +83,7 @@ namespace RedditClone.Controllers
             }
         }
 
-        [Authorize(Roles = "Moderator,Administrator")]
+        [Authorize(Roles = "Edit,Moderator,Administrator")]
         // GET: vrem sa editam un student
         public ActionResult Edit(int Id)
         {
@@ -101,7 +101,7 @@ namespace RedditClone.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "Moderator,Administrator")]
+        [Authorize(Roles = "Edit,Moderator,Administrator")]
         public ActionResult Edit(int id, Post requestPost)
         {
 
