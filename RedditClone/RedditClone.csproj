@@ -257,6 +257,7 @@
     <Content Include="Views\Shared\PostInfo.cshtml" />
     <Content Include="Views\Post\New.cshtml" />
     <Content Include="Views\Post\Show.cshtml" />
+    <Content Include="Views\Post\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
