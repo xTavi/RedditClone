@@ -151,7 +151,7 @@ namespace RedditClone.Controllers
             {
                 db.Posts.Remove(post);
                 db.SaveChanges();
-                TempData["message"] = "Comunitatea a fost sters!";
+                TempData["message"] = "Postarea a fost sters!";
                 return RedirectToAction("Index");
             }
             else
