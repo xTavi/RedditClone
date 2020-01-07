@@ -48,10 +48,12 @@ namespace RedditClone.Controllers
         }
 
         [Authorize(Roles = "User,Moderator,Administrator")]
-        public ActionResult New()
+        public ActionResult New(int Id)
         {
             Post post = new Post();
             post.UserId = User.Identity.GetUserId();
+            post.CommunityId = Id.ToString();
+            post.Community = db.Communities.Find(Id);
             return View(post);
         }
 
@@ -65,6 +67,8 @@ namespace RedditClone.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    post.Community = db.Communities.Find(Int32.Parse(post.CommunityId));
+                    post.User = db.Users.Find(post.UserId);
                     db.Posts.Add(post);
                     db.SaveChanges();
                     TempData["message"] = "O noua postare a fost adaugata!";
@@ -160,6 +164,12 @@ namespace RedditClone.Controllers
                 return RedirectToAction("Index");
             }
 
+        }
+
+        [Authorize(Roles = "User, Moderator, Administrator")]
+        public ActionResult NewPost (int CommunityId)
+        {
+            return RedirectToAction("New");
         }
 
     }

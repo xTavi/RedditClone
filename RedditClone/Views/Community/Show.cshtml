@@ -15,10 +15,14 @@
     <div class="panel-footer">
         <a class="btn btn-success" href="/Community/Edit/@Model.CommunityId">Modifica comunitatea</a>
         <br />
-        @using (Html.BeginForm(actionName: "NewPost", controllerName: "Post", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
+
+        <a class="btn btn-success" href="/Post/New/@Model.CommunityId">Adauga o noua postare</a>
+
+        @*@using (Html.BeginForm(actionName: "New", controllerName: "Post", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
         {
+            @Html.HttpMethodOverride(HttpVerbs.Put)
             <button class="btn btn-success" type="submit">Adauga o noua postare</button>
-        }
+        }*@
     </div>
     }
 </div>

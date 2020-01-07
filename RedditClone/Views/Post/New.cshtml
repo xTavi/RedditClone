@@ -13,6 +13,8 @@
 
     @Html.HiddenFor(m => m.UserId)
 
+    @Html.HiddenFor(m => m.CommunityId)
+
     @Html.Label("Titlu", "Post Name")
     <br />
     @Html.TextBox("Title", null, new { @class = "form-control" })
@@ -26,7 +28,7 @@
     <br />
 
 
-
+    <div> Comunitatea: @Model.Community.Name</div>
     <label>Selectati categoria</label>
 
     <br />
