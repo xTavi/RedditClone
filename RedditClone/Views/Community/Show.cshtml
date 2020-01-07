@@ -12,10 +12,14 @@
         || ViewBag.esteAdmin)
     {
 
-        <div class="panel-footer">
-            <a class="btn btn-success" href="/Community/Edit/@Model.CommunityId">Modifica comunitatea</a>
-            <br />
-        </div>
+    <div class="panel-footer">
+        <a class="btn btn-success" href="/Community/Edit/@Model.CommunityId">Modifica comunitatea</a>
+        <br />
+        @using (Html.BeginForm(actionName: "NewPost", controllerName: "Post", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
+        {
+            <button class="btn btn-success" type="submit">Adauga o noua postare</button>
+        }
+    </div>
     }
 </div>
 
