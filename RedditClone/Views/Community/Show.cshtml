@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Show";
+}
+
+<h1>Show community</h1>
+
+
+<div class="panel panel-default">
+    @Html.Partial("CommunityInfo")
+
+    @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+        || ViewBag.esteAdmin)
+    {
+
+    <div class="panel-footer">
+        <a class="btn btn-success" href="/Community/Edit/@Model.CommunityId">Modifica comunitatea</a>
+        <br />
+
+        <a class="btn btn-success" href="/Post/New/@Model.CommunityId">Adauga o noua postare</a>
+
+        @*@using (Html.BeginForm(actionName: "New", controllerName: "Post", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Put)
+            <button class="btn btn-success" type="submit">Adauga o noua postare</button>
+        }*@
+    </div>
+    }
+</div>
+
+
+@if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+    || ViewBag.esteAdmin)
+{
+
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Community", method: FormMethod.Post, routeValues: new { id = @Model.CommunityId }))
+    {
+
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <br />
+        <button class="btn btn-success" type="submit">Sterge comunitate</button>
+
+    }
+}

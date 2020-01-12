@@ -1,0 +1,10 @@
+﻿@model RedditClone.Models.Post
+
+<div class="panel-heading">@Model.Title</div>
+<div class="panel-body">
+    <strong>@Model.Content</strong>
+    <i class="glyphicon glyphicon-user"></i> Post creator: @Model.User.UserName
+    <div>@Model.Community.Name</div>
+    <br />
+</div>
+

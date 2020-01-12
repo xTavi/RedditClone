@@ -1,0 +1,35 @@
+﻿@model RedditClone.Models.Community
+
+@{
+    ViewBag.Titlu = "Editare Comunitate";
+}
+
+<h2>@ViewBag.Titlu</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Community"))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+
+    @Html.HiddenFor(m => m.CommunityId)
+    <br />
+    @Html.Label("Title", "Titlu Comunitate")
+    <br />
+    @Html.Editor("Name")
+    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Content", "Continut")
+    <br />
+    @Html.EditorFor(m => m.Description)
+    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Hidden("CreationTime", DateTime.Now, new { @class = "form-control" })
+    <br />
+
+
+    <button class="btn btn-sm btn-success" type="submit">Modifica comunitate</button>
+}
+

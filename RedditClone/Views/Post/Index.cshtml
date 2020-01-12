@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Welcome to Posts page!";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+@foreach (RedditClone.Models.Post post in ViewBag.Posts)
+{
+    <div class="panel panel-default">
+        @Html.Partial("PostInfo", post)
+        <div class="panel-footer">
+            <a class="btn btn-sm btn-success" href="/Post/Show/@post.PostId">Read Post </a>
+        </div>
+    </div>
+    <br />
+}
+
+

@@ -79,6 +79,8 @@ namespace RedditClone.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public ICollection<Community> Communities { get; set; }
     }
 
     public class ResetPasswordViewModel

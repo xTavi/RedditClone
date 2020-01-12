@@ -1,0 +1,35 @@
+﻿@model RedditClone.Models.Community
+
+@{
+    ViewBag.Titlu = "New Community";
+}
+
+<h2>@ViewBag.Titlu</h2>
+<br />
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Community"))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.UserId)
+
+    @Html.Label("Name", "Community Name")
+    <br />
+    @Html.TextBox("Name", null, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Description", "Brief description")
+    <br />
+    @Html.TextArea("Description", null, new { @class = "form-control" })
+    @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Hidden("CreationTime", DateTime.Now, new { @class = "form-control" })
+
+    <label>Selectati categoria</label>
+
+    <br />
+
+    <button class="btn btn-sm btn-success" type="submit">Create community!</button>
+}
